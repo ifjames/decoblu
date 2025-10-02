@@ -98,6 +98,19 @@ export default function Navigation() {
     }
   };
 
+  const handleLogoClick = (e: React.MouseEvent) => {
+    if (isHomePage) {
+      e.preventDefault();
+      setIsOpen(false);
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    } else {
+      setIsOpen(false);
+    }
+  };
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 bg-white backdrop-blur-sm border-b shadow-md transition-transform duration-300 ease-in-out ${
@@ -107,7 +120,7 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20 lg:h-24">
           {/* Logo - Icon + Text */}
-          <Link href="/" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-3" onClick={handleLogoClick}>
             <img
               src={logoIcon}
               alt="DecoBlu Icon"
